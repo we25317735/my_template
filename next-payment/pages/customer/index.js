@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import Link from 'next/link'
 
 const Customer = () => {
   const [messageInput, setMessageInput] = useState('')
@@ -49,7 +50,7 @@ const Customer = () => {
     }
   }
 
-  const handleKeyDown = (e) => {
+  const Key_down = (e) => {
     if (e.key === 'Enter') {
       sendMessage()
     }
@@ -57,19 +58,39 @@ const Customer = () => {
 
   return (
     <div>
-      <h1>WebSocket 範例</h1>
-      <input
-        type="text"
-        value={messageInput}
-        onChange={(e) => setMessageInput(e.target.value)}
-        onKeyDown={handleKeyDown}
-        placeholder="輸入訊息"
-      />
-      <button onClick={sendMessage}>發送</button>
-      <div id="messages">
-        {messages.map((msg, index) => (
-          <p key={index}>{msg}</p>
-        ))}
+      <h1>這裡是課服中心</h1>
+
+      <div className="d-flex">
+        <span>
+          <Link href="./home">回首頁</Link>
+        </span>
+        <span className="ms-3">
+          <Link href="./user">會員頁</Link>
+        </span>
+        <span className="ms-3">
+          <Link href="./product">商品頁</Link>
+        </span>
+      </div>
+
+      <div className="mt-5">
+        <h4 className="mb-3">對話框</h4>
+
+        <div id="messages" style={{ height: '20vh', overflow: 'scroll' }}>
+          {messages
+            .slice(0)
+            .reverse()
+            .map((msg, index) => (
+              <p key={index}>{msg}</p>
+            ))}
+        </div>
+        <input
+          type="text"
+          value={messageInput}
+          onChange={(e) => setMessageInput(e.target.value)}
+          onKeyDown={Key_down}
+          placeholder="輸入訊息"
+        />
+        <button onClick={sendMessage}>發送</button>
       </div>
     </div>
   )

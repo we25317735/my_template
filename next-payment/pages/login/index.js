@@ -22,7 +22,7 @@ const Login = () => {
         {/* Google 登入按鈕 */}
         <Google_btn />
         <Line_btn />
-        <button
+        {/* <button
           className="btn d-flex align-items-center justify-content-center"
           style={{
             backgroundColor: '#fff',
@@ -36,7 +36,7 @@ const Login = () => {
           }}
         >
           <FaTwitter />
-        </button>
+        </button> */}
       </div>
       <div className="text-center my-3">or</div>
       <form>

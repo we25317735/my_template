@@ -116,6 +116,12 @@ const Home = () => {
         <span className="ms-3">
           <Link href="./product">商品頁</Link>
         </span>
+        <span className="ms-3">
+          <Link href="./cart">購物車</Link>
+        </span>
+        <span className="ms-3">
+          <Link href="./customer">客服中心</Link>
+        </span>
       </div>
       <div className="mt-5">
         {/* 根據登入狀態顯示按鈕 */}

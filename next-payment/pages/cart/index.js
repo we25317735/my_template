@@ -38,6 +38,9 @@ export default function Cart() {
         <span className="ms-3">
           <Link href="./product">商品頁</Link>
         </span>
+        <span className="ms-3">
+          <Link href="./customer">客服中心</Link>
+        </span>
       </div>
 
       <div className="mt-5">
@@ -74,7 +77,7 @@ export default function Cart() {
         <div className="d-flex gap-2">
           <Line_pay />
 
-          <button
+          {/* <button
             className="btn d-flex align-items-center justify-content-center"
             style={{
               backgroundColor: '#fff',
@@ -88,8 +91,8 @@ export default function Cart() {
             }}
             onClick={() => console.log('ECPay')}
           >
-            <FaCcVisa /> {/* 使用 Visa 或其他信用卡圖標作為示例 */}
-          </button>
+            <FaCcVisa />
+          </button> */}
         </div>
       </div>
 
@@ -98,7 +101,7 @@ export default function Cart() {
         onClick={handleCheckout}
         disabled={!auth.isAuth} // 未登入時禁用結帳按鈕
       >
-        結帳
+        結帳(現在是清空)
       </button>
     </>
   )

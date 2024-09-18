@@ -6,7 +6,7 @@
     <title>WebSocket 範例</title>
 </head>
 <body>
-    <h1>WebSocket 範例</h1>
+    <h1>WebSocket 範例 - 模擬課服人員</h1>
     <input type="text" id="messageInput" placeholder="輸入訊息">
     <button id="sendButton">發送</button>
     <div id="messages"></div>
@@ -20,7 +20,7 @@
         let username = '二號老鄉';
 
         // 建立 WebSocket 連線
-        const socket = new WebSocket('ws://localhost:8080');
+        const socket = new WebSocket('ws://localhost:3005');
 
         // 連線開啟時
         socket.onopen = function(event) {
