@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket 範例</title>
+</head>
+<body>
+    <h1>WebSocket 範例</h1>
+    <input type="text" id="messageInput" placeholder="輸入訊息">
+    <button id="sendButton">發送</button>
+    <div id="messages"></div>
+
+    <script>
+
+        let enter = document.getElementById('sendButton');
+        const messagesDiv = document.getElementById('messages');
+
+        // 設定發送者的姓名
+        let username = '二號老鄉';
+
+        // 建立 WebSocket 連線
+        const socket = new WebSocket('ws://localhost:8080');
+
+        // 連線開啟時
+        socket.onopen = function(event) {
+            console.log('WebSocket 已連線');
+        };
+
+        // 接收來自伺服器的訊息
+        socket.onmessage = function(event) {
+
+            console.log(event.data);
+
+            const newMessage = document.createElement('p');
+            newMessage.textContent = event.data;
+            messagesDiv.appendChild(newMessage);
+        };
+
+        // 當連線關閉時
+        socket.onclose = function(event) {
+            console.log('WebSocket 已斷線');
+        };
+
+        // 當發生錯誤時
+        socket.onerror = function(event) {
+            console.error('WebSocket 發生錯誤', event);
+        };
+
+        // 發送訊息到伺服器
+        enter.addEventListener('click', function () {
+            message_push();
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if(e.keyCode === 13){
+                message_push();
+            }
+        })
+
+        function message_push(){
+            const messageInput = document.getElementById('messageInput');
+            if(messageInput.value == "") return;
+            const message = `${username}: ${messageInput.value}`;
+            socket.send(message);
+            messageInput.value = '';
+        }
+    </script>
+</body>
+</html>
